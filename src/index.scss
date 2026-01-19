@@ -33,6 +33,11 @@ p, a, h1, h2, h3, h4, h5, label, button {
   font-family: "Lato", sans-serif;
 }
 
+/* Override text color for contact form inputs */
+input, textarea {
+  color: #000 !important;
+}
+
 .navigation-bar {
   justify-content: space-between;
   background-color: #0d1116;
@@ -142,6 +147,22 @@ p, a, h1, h2, h3, h4, h5, label, button {
   }
 
   .flex-chips .chip-title {
+    color: #0d1116;
+  }
+
+  .projects-container ul {
+    color: #0d1116 !important;
+  }
+
+  .projects-container li {
+    color: #0d1116 !important;
+  }
+
+  ul {
+    color: #0d1116;
+  }
+
+  li {
     color: #0d1116;
   }
 }

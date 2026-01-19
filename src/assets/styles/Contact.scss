@@ -20,6 +20,7 @@
 
   fieldset {
     background-color: white;
+    color: #000 !important;
   }
 }
 
@@ -45,4 +46,78 @@ form {
 .body-form {
   width: 100% !important;
   margin-bottom: 15px !important;
+}
+
+.MuiOutlinedInput-input {
+  color: #000 !important;
+  font-size: 1rem !important;
+  font-weight: 400 !important;
+}
+
+.contact-form .MuiInputBase-input {
+  color: #000 !important;
+  font-size: 1rem !important;
+}
+
+.contact-form .MuiInputBase-input::placeholder {
+  color: #999 !important;
+  opacity: 1;
+}
+
+/* TextField input and textarea text color */
+.contact-form input,
+.contact-form textarea {
+  color: #000 !important;
+  pointer-events: auto !important;
+  cursor: text !important;
+  font-size: 1rem !important;
+  font-family: Roboto, "Helvetica Neue", sans-serif !important;
+  letter-spacing: 0.5px !important;
+}
+
+.contact-form .MuiTextField-root .MuiOutlinedInput-root {
+  color: #000 !important;
+  pointer-events: auto !important;
+}
+
+.contact-form .MuiOutlinedInput-notchedOutline {
+  border-color: #bbb !important;
+}
+
+/* Ensure text is visible when focused */
+.contact-form .MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-input {
+  color: #000 !important;
+  font-size: 1rem !important;
+}
+
+.contact-form .MuiFormLabel-root {
+  color: #000 !important;
+  font-size: 1rem !important;
+}
+
+.contact-form .MuiOutlinedInput-root {
+  pointer-events: auto !important;
+  cursor: text !important;
+}
+
+/* Additional MUI input styling */
+.contact-form .MuiInputBase-root {
+  color: #000 !important;
+  background-color: #ffffff !important;
+}
+
+.contact-form .MuiInputBase-root input {
+  color: #000 !important;
+  caret-color: #000 !important;
+  font-size: 1rem !important;
+  background-color: #ffff99 !important;
+  -webkit-text-fill-color: #000 !important;
+  -webkit-autofill-text-fill: #000 !important;
+}
+
+.contact-form .MuiInputBase-root textarea {
+  color: #000 !important;
+  caret-color: #000 !important;
+  background-color: #ffffff !important;
+  -webkit-text-fill-color: #000 !important;
 }

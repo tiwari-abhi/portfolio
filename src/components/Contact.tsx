@@ -34,7 +34,7 @@ function Contact() {
 
       console.log(templateParams);
 
-      emailjs.send('service_id', 'template_id', templateParams, 'api_key').then(
+      emailjs.send('service_mi56m48', 'template_ee4vea9', templateParams, 'paR32iJbKzUwmN96t').then(
          (response) => {
            console.log('SUCCESS!', response.status, response.text);
          },
@@ -62,45 +62,56 @@ function Contact() {
             className='contact-form'
           >
             <div className='form-flex'>
-              <TextField
-                required
-                id="outlined-required"
-                label="Your Name"
+              <input
+                type="text"
                 placeholder="What's your name?"
                 value={name}
                 onChange={(e) => {
+                  console.log('Name changed:', e.target.value);
                   setName(e.target.value);
                 }}
-                error={nameError}
-                helperText={nameError ? "Please enter your name" : ""}
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  fontSize: '1rem',
+                  color: '#000',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ccc'
+                }}
               />
-              <TextField
-                required
-                id="outlined-required"
-                label="Email / Phone"
+              <input
+                type="text"
                 placeholder="How can I reach you?"
                 value={email}
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
-                error={emailError}
-                helperText={emailError ? "Please enter your email or phone number" : ""}
+                style={{
+                  width: '100%',
+                  padding: '10px',
+                  fontSize: '1rem',
+                  color: '#000',
+                  backgroundColor: '#fff',
+                  border: '1px solid #ccc'
+                }}
               />
             </div>
-            <TextField
-              required
-              id="outlined-multiline-static"
-              label="Message"
+            <textarea
               placeholder="Send me any inquiries or questions"
-              multiline
               rows={10}
-              className="body-form"
               value={message}
               onChange={(e) => {
                 setMessage(e.target.value);
               }}
-              error={messageError}
-              helperText={messageError ? "Please enter the message" : ""}
+              style={{
+                width: '100%',
+                padding: '10px',
+                fontSize: '1rem',
+                color: '#000',
+                backgroundColor: '#fff',
+                border: '1px solid #ccc',
+                marginBottom: '15px'
+              }}
             />
             <Button variant="contained" endIcon={<SendIcon />} onClick={sendEmail}>
               Send

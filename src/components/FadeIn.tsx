@@ -65,6 +65,7 @@ import React, {
                 transition: `opacity ${transitionDuration}ms, transform ${transitionDuration}ms`,
                 transform: maxIsVisible > i ? "none" : "translateY(20px)",
                 opacity: maxIsVisible > i ? 1 : 0,
+                pointerEvents: maxIsVisible > i ? "auto" : "none",
               }}
             >
               {child}
