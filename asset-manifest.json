@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/portfolio/static/css/main.f03f0c33.css",
+    "main.js": "/portfolio/static/js/main.038a50dc.js",
+    "static/js/453.e7f01505.chunk.js": "/portfolio/static/js/453.e7f01505.chunk.js",
+    "static/media/bg-light.png": "/portfolio/static/media/bg-light.bac0efb485244a522981.png",
+    "static/media/profilepic.jpeg": "/portfolio/static/media/profilepic.f4c66a429db5fa1b1a29.jpeg",
+    "static/media/bg-dark.png": "/portfolio/static/media/bg-dark.f420c6b8458af72de935.png",
+    "static/media/aws_logo.png": "/portfolio/static/media/aws_logo.058da8828f97be6cde7c.png",
+    "static/media/mcp_logo.png": "/portfolio/static/media/mcp_logo.fa20447232616be7c4e6.png",
+    "static/media/azure_logo.png": "/portfolio/static/media/azure_logo.6e06c048b84b463cc4ab.png",
+    "static/media/matillion_logo.png": "/portfolio/static/media/matillion_logo.41663d685e16e780c11e.png",
+    "index.html": "/portfolio/index.html",
+    "main.f03f0c33.css.map": "/portfolio/static/css/main.f03f0c33.css.map",
+    "main.038a50dc.js.map": "/portfolio/static/js/main.038a50dc.js.map",
+    "453.e7f01505.chunk.js.map": "/portfolio/static/js/453.e7f01505.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.f03f0c33.css",
+    "static/js/main.038a50dc.js"
+  ]
+}
