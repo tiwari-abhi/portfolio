@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Sun, Sunrise, Sunset, Moon } from "lucide-react";
+import { TimeOfDay } from "@/hooks/useTimeOfDay";
 
 const links = [
   { label: "Expertise", href: "#expertise" },
@@ -8,9 +9,21 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const Navbar = () => {
+const timeIcons: Record<TimeOfDay, typeof Sun> = {
+  morning: Sunrise,
+  afternoon: Sun,
+  evening: Sunset,
+  night: Moon,
+};
+
+interface NavbarProps {
+  timeOfDay: TimeOfDay;
+}
+
+const Navbar = ({ timeOfDay }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const TimeIcon = timeIcons[timeOfDay];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
@@ -40,6 +53,10 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4">
+            <TimeIcon className="h-3.5 w-3.5 text-primary" />
+            <span className="capitalize">{timeOfDay}</span>
+          </div>
         </div>
 
         {/* Mobile toggle */}
@@ -65,6 +82,10 @@ const Navbar = () => {
               {link.label}
             </a>
           ))}
+          <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono pt-2 mt-2 border-t border-border">
+            <TimeIcon className="h-3.5 w-3.5 text-primary" />
+            <span className="capitalize">{timeOfDay} mode</span>
+          </div>
         </div>
       )}
     </nav>
