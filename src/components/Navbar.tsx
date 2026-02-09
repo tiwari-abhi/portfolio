@@ -1,12 +1,25 @@
 import { useState, useEffect } from "react";
 import { Menu, X, Sun, Sunrise, Sunset, Moon } from "lucide-react";
 import { TimeOfDay } from "@/hooks/useTimeOfDay";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 const links = [
   { label: "Expertise", href: "#expertise" },
   { label: "Work", href: "#work" },
   { label: "Projects", href: "#projects" },
   { label: "Contact", href: "#contact" },
+];
+
+const timeOptions: { value: TimeOfDay; label: string; icon: typeof Sun }[] = [
+  { value: "morning", label: "Morning", icon: Sunrise },
+  { value: "afternoon", label: "Afternoon", icon: Sun },
+  { value: "evening", label: "Evening", icon: Sunset },
+  { value: "night", label: "Night", icon: Moon },
 ];
 
 const timeIcons: Record<TimeOfDay, typeof Sun> = {
@@ -18,9 +31,10 @@ const timeIcons: Record<TimeOfDay, typeof Sun> = {
 
 interface NavbarProps {
   timeOfDay: TimeOfDay;
+  onThemeChange: (theme: TimeOfDay) => void;
 }
 
-const Navbar = ({ timeOfDay }: NavbarProps) => {
+const Navbar = ({ timeOfDay, onThemeChange }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
   const TimeIcon = timeIcons[timeOfDay];
@@ -53,10 +67,27 @@ const Navbar = ({ timeOfDay }: NavbarProps) => {
               {link.label}
             </a>
           ))}
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4">
-            <TimeIcon className="h-3.5 w-3.5 text-primary" />
-            <span className="capitalize">{timeOfDay}</span>
-          </div>
+          
+          <DropdownMenu>
+            <DropdownMenuTrigger className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4 hover:text-primary transition-colors outline-none">
+              <TimeIcon className="h-3.5 w-3.5 text-primary" />
+              <span className="capitalize">{timeOfDay}</span>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent align="end" className="bg-card border-border">
+              {timeOptions.map((option) => (
+                <DropdownMenuItem
+                  key={option.value}
+                  onClick={() => onThemeChange(option.value)}
+                  className={`flex items-center gap-2 font-mono text-xs cursor-pointer ${
+                    timeOfDay === option.value ? "text-primary" : "text-muted-foreground"
+                  }`}
+                >
+                  <option.icon className="h-3.5 w-3.5" />
+                  {option.label}
+                </DropdownMenuItem>
+              ))}
+            </DropdownMenuContent>
+          </DropdownMenu>
         </div>
 
         {/* Mobile toggle */}
@@ -82,9 +113,27 @@ const Navbar = ({ timeOfDay }: NavbarProps) => {
               {link.label}
             </a>
           ))}
-          <div className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono pt-2 mt-2 border-t border-border">
-            <TimeIcon className="h-3.5 w-3.5 text-primary" />
-            <span className="capitalize">{timeOfDay} mode</span>
+          <div className="pt-3 mt-3 border-t border-border">
+            <p className="text-xs text-muted-foreground font-mono mb-2">Theme</p>
+            <div className="flex gap-2">
+              {timeOptions.map((option) => (
+                <button
+                  key={option.value}
+                  onClick={() => {
+                    onThemeChange(option.value);
+                    setOpen(false);
+                  }}
+                  className={`flex items-center justify-center p-2 rounded-md transition-colors ${
+                    timeOfDay === option.value
+                      ? "bg-primary text-primary-foreground"
+                      : "bg-secondary text-muted-foreground hover:text-foreground"
+                  }`}
+                  aria-label={option.label}
+                >
+                  <option.icon className="h-4 w-4" />
+                </button>
+              ))}
+            </div>
           </div>
         </div>
       )}
