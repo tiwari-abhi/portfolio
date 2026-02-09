@@ -5,6 +5,7 @@
 @tailwind utilities;
 
 @layer base {
+  /* Night Theme (default: 9pm - 6am) - Deep navy, cool teal */
   :root {
     --background: 220 20% 7%;
     --foreground: 210 20% 90%;
@@ -50,6 +51,108 @@
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
+
+    --gradient-start: 174 60% 51%;
+    --gradient-end: 38 92% 60%;
+  }
+
+  /* Morning Theme (6am - 12pm) - Warm cream, sunrise orange */
+  .theme-morning {
+    --background: 40 30% 96%;
+    --foreground: 30 20% 15%;
+
+    --card: 40 25% 93%;
+    --card-foreground: 30 20% 15%;
+
+    --popover: 40 25% 93%;
+    --popover-foreground: 30 20% 15%;
+
+    --primary: 25 95% 53%;
+    --primary-foreground: 40 30% 98%;
+
+    --secondary: 40 20% 88%;
+    --secondary-foreground: 30 20% 20%;
+
+    --muted: 40 15% 90%;
+    --muted-foreground: 30 10% 45%;
+
+    --accent: 25 95% 53%;
+    --accent-foreground: 40 30% 98%;
+
+    --border: 40 15% 85%;
+    --input: 40 15% 85%;
+    --ring: 25 95% 53%;
+
+    --highlight: 45 100% 51%;
+
+    --gradient-start: 25 95% 53%;
+    --gradient-end: 45 100% 51%;
+  }
+
+  /* Afternoon Theme (12pm - 6pm) - Clean white, vibrant blue */
+  .theme-afternoon {
+    --background: 210 30% 98%;
+    --foreground: 220 25% 15%;
+
+    --card: 210 25% 95%;
+    --card-foreground: 220 25% 15%;
+
+    --popover: 210 25% 95%;
+    --popover-foreground: 220 25% 15%;
+
+    --primary: 210 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 20% 90%;
+    --secondary-foreground: 220 25% 20%;
+
+    --muted: 210 15% 92%;
+    --muted-foreground: 220 10% 45%;
+
+    --accent: 210 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --border: 210 15% 88%;
+    --input: 210 15% 88%;
+    --ring: 210 100% 50%;
+
+    --highlight: 170 80% 40%;
+
+    --gradient-start: 210 100% 50%;
+    --gradient-end: 170 80% 40%;
+  }
+
+  /* Evening Theme (6pm - 9pm) - Warm dusk, sunset gradient */
+  .theme-evening {
+    --background: 260 25% 12%;
+    --foreground: 30 30% 92%;
+
+    --card: 260 22% 15%;
+    --card-foreground: 30 30% 92%;
+
+    --popover: 260 22% 15%;
+    --popover-foreground: 30 30% 92%;
+
+    --primary: 20 90% 55%;
+    --primary-foreground: 260 25% 10%;
+
+    --secondary: 260 18% 20%;
+    --secondary-foreground: 30 25% 85%;
+
+    --muted: 260 15% 18%;
+    --muted-foreground: 30 15% 55%;
+
+    --accent: 20 90% 55%;
+    --accent-foreground: 260 25% 10%;
+
+    --border: 260 15% 22%;
+    --input: 260 15% 22%;
+    --ring: 20 90% 55%;
+
+    --highlight: 340 80% 55%;
+
+    --gradient-start: 20 90% 55%;
+    --gradient-end: 340 80% 55%;
   }
 }
 
@@ -61,6 +164,7 @@
   body {
     @apply bg-background text-foreground;
     font-family: var(--font-display);
+    transition: background-color 0.5s ease, color 0.5s ease;
   }
 
   h1, h2, h3, h4, h5, h6 {
@@ -75,7 +179,7 @@
 @layer utilities {
   .text-gradient {
     @apply bg-clip-text text-transparent;
-    background-image: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--highlight)));
+    background-image: linear-gradient(135deg, hsl(var(--gradient-start)), hsl(var(--gradient-end)));
   }
 
   .glow-primary {

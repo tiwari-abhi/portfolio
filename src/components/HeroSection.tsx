@@ -1,7 +1,22 @@
 import { motion } from "framer-motion";
-import { ArrowDown } from "lucide-react";
+import { ArrowDown, Sun, Sunrise, Sunset, Moon } from "lucide-react";
+import { TimeOfDay, getTimeGreeting } from "@/hooks/useTimeOfDay";
 
-const HeroSection = () => {
+interface HeroSectionProps {
+  timeOfDay: TimeOfDay;
+}
+
+const timeIcons: Record<TimeOfDay, typeof Sun> = {
+  morning: Sunrise,
+  afternoon: Sun,
+  evening: Sunset,
+  night: Moon,
+};
+
+const HeroSection = ({ timeOfDay }: HeroSectionProps) => {
+  const TimeIcon = timeIcons[timeOfDay];
+  const greeting = getTimeGreeting(timeOfDay);
+
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-grid">
       {/* Gradient overlay */}
@@ -13,9 +28,17 @@ const HeroSection = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7 }}
         >
-          <p className="text-primary font-mono text-sm mb-4 tracking-wider">
-            &gt; DATA ENGINEER
-          </p>
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="flex items-center justify-center gap-2 mb-4"
+          >
+            <TimeIcon className="h-4 w-4 text-primary" />
+            <p className="text-primary font-mono text-sm tracking-wider">
+              {greeting} — DATA ENGINEER
+            </p>
+          </motion.div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Building the
             <br />
