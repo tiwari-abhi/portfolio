@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import ExpertiseSection from "@/components/ExpertiseSection";
@@ -5,7 +6,6 @@ import WorkHistorySection from "@/components/WorkHistorySection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
 import { useTimeOfDay, TimeOfDay } from "@/hooks/useTimeOfDay";
-import { useEffect } from "react";
 
 const themeClasses: Record<TimeOfDay, string> = {
   morning: "theme-morning",
@@ -15,14 +15,17 @@ const themeClasses: Record<TimeOfDay, string> = {
 };
 
 const Index = () => {
-  const timeOfDay = useTimeOfDay();
+  const autoTimeOfDay = useTimeOfDay();
+  const [manualTheme, setManualTheme] = useState<TimeOfDay | null>(null);
+  
+  const activeTheme = manualTheme ?? autoTimeOfDay;
 
   useEffect(() => {
     // Remove all theme classes first
     document.documentElement.classList.remove("theme-morning", "theme-afternoon", "theme-evening");
     
     // Add current theme class
-    const themeClass = themeClasses[timeOfDay];
+    const themeClass = themeClasses[activeTheme];
     if (themeClass) {
       document.documentElement.classList.add(themeClass);
     }
@@ -30,12 +33,16 @@ const Index = () => {
     return () => {
       document.documentElement.classList.remove("theme-morning", "theme-afternoon", "theme-evening");
     };
-  }, [timeOfDay]);
+  }, [activeTheme]);
+
+  const handleThemeChange = (theme: TimeOfDay) => {
+    setManualTheme(theme);
+  };
 
   return (
     <div className="min-h-screen transition-colors duration-500">
-      <Navbar timeOfDay={timeOfDay} />
-      <HeroSection timeOfDay={timeOfDay} />
+      <Navbar timeOfDay={activeTheme} onThemeChange={handleThemeChange} />
+      <HeroSection timeOfDay={activeTheme} />
       <ExpertiseSection />
       <WorkHistorySection />
       <ProjectsSection />
