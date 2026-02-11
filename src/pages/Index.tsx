@@ -5,14 +5,24 @@ import ExpertiseSection from "@/components/ExpertiseSection";
 import WorkHistorySection from "@/components/WorkHistorySection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
-import { Theme } from "@/hooks/useTimeOfDay";
+import { Theme } from "@/components/Navbar"
 
 const Index = () => {
-  const [theme, setTheme] = useState<Theme>("evening");
+  const themeByTimeOfDay = () => {
+    const hour = new Date().getHours();
+    if (hour >= 18 || hour < 6) {
+      return "night";
+    }
+    else {
+      return "morning";
+    }
+  };
+
+  const [theme, setTheme] = useState<Theme>(themeByTimeOfDay());
 
   useEffect(() => {
     document.documentElement.classList.remove("theme-morning", "theme-afternoon", "theme-evening");
-    if (theme === "afternoon") {
+    if (theme === "morning") {
       document.documentElement.classList.add("theme-afternoon");
     } else {
       document.documentElement.classList.add("theme-evening");
@@ -23,7 +33,7 @@ const Index = () => {
   }, [theme]);
 
   const handleToggle = () => {
-    setTheme((prev) => (prev === "evening" ? "afternoon" : "evening"));
+    setTheme((prev) => (prev === "night" ? "morning" : "night"));
   };
 
   return (

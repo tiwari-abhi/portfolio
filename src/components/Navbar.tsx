@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Sunset } from "lucide-react";
-import { Theme } from "@/hooks/useTimeOfDay";
+import { Menu, X, Sun, Moon } from "lucide-react";
+
+export type Theme = "night" | "morning";
 
 const links = [
   { label: "Expertise", href: "#expertise" },
@@ -24,7 +25,7 @@ const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
     return () => window.removeEventListener("scroll", handler);
   }, []);
 
-  const isAfternoon = theme === "afternoon";
+  const isMorning = theme === "morning";
 
   return (
     <nav
@@ -51,15 +52,14 @@ const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
 
           <button
             onClick={onThemeToggle}
-            className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4 hover:text-primary transition-colors outline-none"
+            className="theme-toggle-btn"
             aria-label="Toggle theme"
           >
-            {isAfternoon ? (
-              <Sun className="h-3.5 w-3.5 text-primary" />
+            {isMorning ? (
+              <Moon size={20} />
             ) : (
-              <Sunset className="h-3.5 w-3.5 text-primary" />
+              <Sun size={20} />
             )}
-            <span className="capitalize">{theme}</span>
           </button>
         </div>
 
@@ -94,12 +94,11 @@ const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
               }}
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
             >
-              {isAfternoon ? (
-                <Sun className="h-4 w-4 text-primary" />
+              {isMorning ? (
+                <Moon size={20} />
               ) : (
-                <Sunset className="h-4 w-4 text-primary" />
+                <Sun size={20} />
               )}
-              Switch to {isAfternoon ? "Evening" : "Afternoon"}
             </button>
           </div>
         </div>
