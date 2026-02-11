@@ -5,89 +5,58 @@
 @tailwind utilities;
 
 @layer base {
-  /* Night Theme (default: 9pm - 6am) - Deep navy, cool teal */
+  /* Evening Theme (default) - Warm dusk, sunset gradient */
   :root {
-    --background: 220 20% 7%;
-    --foreground: 210 20% 90%;
+    --background: 260 25% 12%;
+    --foreground: 30 30% 92%;
 
-    --card: 220 18% 10%;
-    --card-foreground: 210 20% 90%;
+    --card: 260 22% 15%;
+    --card-foreground: 30 30% 92%;
 
-    --popover: 220 18% 10%;
-    --popover-foreground: 210 20% 90%;
+    --popover: 260 22% 15%;
+    --popover-foreground: 30 30% 92%;
 
-    --primary: 174 60% 51%;
-    --primary-foreground: 220 20% 7%;
+    --primary: 20 90% 55%;
+    --primary-foreground: 260 25% 10%;
 
-    --secondary: 220 15% 15%;
-    --secondary-foreground: 210 20% 85%;
+    --secondary: 260 18% 20%;
+    --secondary-foreground: 30 25% 85%;
 
-    --muted: 220 15% 13%;
-    --muted-foreground: 215 15% 55%;
+    --muted: 260 15% 18%;
+    --muted-foreground: 30 15% 55%;
 
-    --accent: 174 60% 51%;
-    --accent-foreground: 220 20% 7%;
+    --accent: 20 90% 55%;
+    --accent-foreground: 260 25% 10%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 220 15% 18%;
-    --input: 220 15% 18%;
-    --ring: 174 60% 51%;
+    --border: 260 15% 22%;
+    --input: 260 15% 22%;
+    --ring: 20 90% 55%;
 
     --radius: 0.5rem;
 
-    --highlight: 38 92% 60%;
-    --highlight-foreground: 220 20% 7%;
+    --highlight: 340 80% 55%;
+    --highlight-foreground: 260 25% 10%;
 
-    --sidebar-background: 220 18% 10%;
-    --sidebar-foreground: 210 20% 90%;
-    --sidebar-primary: 174 60% 51%;
-    --sidebar-primary-foreground: 220 20% 7%;
-    --sidebar-accent: 220 15% 15%;
-    --sidebar-accent-foreground: 210 20% 90%;
-    --sidebar-border: 220 15% 18%;
-    --sidebar-ring: 174 60% 51%;
+    --sidebar-background: 260 22% 15%;
+    --sidebar-foreground: 30 30% 92%;
+    --sidebar-primary: 20 90% 55%;
+    --sidebar-primary-foreground: 260 25% 10%;
+    --sidebar-accent: 260 18% 20%;
+    --sidebar-accent-foreground: 30 30% 92%;
+    --sidebar-border: 260 15% 22%;
+    --sidebar-ring: 20 90% 55%;
 
     --font-display: 'Space Grotesk', sans-serif;
     --font-mono: 'IBM Plex Mono', monospace;
 
-    --gradient-start: 174 60% 51%;
-    --gradient-end: 38 92% 60%;
+    --gradient-start: 20 90% 55%;
+    --gradient-end: 340 80% 55%;
   }
 
-  /* Morning Theme (6am - 12pm) - Warm cream, sunrise orange */
-  .theme-morning {
-    --background: 40 30% 96%;
-    --foreground: 30 20% 15%;
 
-    --card: 40 25% 93%;
-    --card-foreground: 30 20% 15%;
-
-    --popover: 40 25% 93%;
-    --popover-foreground: 30 20% 15%;
-
-    --primary: 25 95% 53%;
-    --primary-foreground: 40 30% 98%;
-
-    --secondary: 40 20% 88%;
-    --secondary-foreground: 30 20% 20%;
-
-    --muted: 40 15% 90%;
-    --muted-foreground: 30 10% 45%;
-
-    --accent: 25 95% 53%;
-    --accent-foreground: 40 30% 98%;
-
-    --border: 40 15% 85%;
-    --input: 40 15% 85%;
-    --ring: 25 95% 53%;
-
-    --highlight: 45 100% 51%;
-
-    --gradient-start: 25 95% 53%;
-    --gradient-end: 45 100% 51%;
-  }
 
   /* Afternoon Theme (12pm - 6pm) - Clean white, vibrant blue */
   .theme-afternoon {
@@ -120,39 +89,6 @@
 
     --gradient-start: 210 100% 50%;
     --gradient-end: 170 80% 40%;
-  }
-
-  /* Evening Theme (6pm - 9pm) - Warm dusk, sunset gradient */
-  .theme-evening {
-    --background: 260 25% 12%;
-    --foreground: 30 30% 92%;
-
-    --card: 260 22% 15%;
-    --card-foreground: 30 30% 92%;
-
-    --popover: 260 22% 15%;
-    --popover-foreground: 30 30% 92%;
-
-    --primary: 20 90% 55%;
-    --primary-foreground: 260 25% 10%;
-
-    --secondary: 260 18% 20%;
-    --secondary-foreground: 30 25% 85%;
-
-    --muted: 260 15% 18%;
-    --muted-foreground: 30 15% 55%;
-
-    --accent: 20 90% 55%;
-    --accent-foreground: 260 25% 10%;
-
-    --border: 260 15% 22%;
-    --input: 260 15% 22%;
-    --ring: 20 90% 55%;
-
-    --highlight: 340 80% 55%;
-
-    --gradient-start: 20 90% 55%;
-    --gradient-end: 340 80% 55%;
   }
 }
 
