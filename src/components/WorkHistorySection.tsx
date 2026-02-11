@@ -4,27 +4,35 @@ import { Briefcase } from "lucide-react";
 const jobs = [
   {
     role: "Senior Data Engineer",
-    company: "TechCorp Inc.",
-    period: "2022 — Present",
+    company: "CVS Health",
+    period: "May 2024 — Present",
     description:
-      "Leading the data platform team, designing real-time streaming pipelines and migrating legacy ETL to a modern ELT stack with dbt and Snowflake.",
-    tech: ["Snowflake", "dbt", "Airflow", "Kafka", "Python"],
+      "Lead development of petabyte scale reporting solutions while conforming to PII and PHI data standards.",
+    tech: ["BigQuery", "Tableau", "Composer", "Dataproc", "Google Cloud"],
   },
   {
-    role: "Data Engineer",
-    company: "DataFlow Solutions",
-    period: "2019 — 2022",
+    role: "Senior Data Engineer",
+    company: "DataKitchen",
+    period: "Jun 2020 — Apr 2024",
     description:
-      "Built and maintained 50+ data pipelines processing 10TB daily. Implemented data quality monitoring and alerting systems.",
-    tech: ["AWS", "Spark", "Redshift", "Terraform", "SQL"],
+      "Built scalable, automated data pipelines incorporating principals of DataOps, to improve developer efficiency and drive up customer adoption.",
+    tech: ["Kubernetes", "REST APIs", "Python", "ANSI-SQL", "Azure", "Snowflake"],
   },
   {
-    role: "Junior Data Engineer",
-    company: "Analytics Startup",
-    period: "2017 — 2019",
+    role: "Data Infrastructure Analyst",
+    company: "TripAdvisor",
+    period: "Feb 2020 — May 2020",
     description:
-      "Developed ETL pipelines and data models for a SaaS analytics product. Introduced CI/CD for data pipeline deployments.",
-    tech: ["Python", "PostgreSQL", "Luigi", "Docker", "GCP"],
+      "Spearheaded development of warehouse to support complex, ad-hoc analytics on clickstream data from Flights, Cars & Cruise pages.",
+    tech: ["Presto-SQL", "Shell", "Git", "AWS", "Databricks"],
+  },
+  {
+    role: "Business Intelligence Analyst",
+    company: "Athena IT Solutions",
+    period: "Jan 2019 — Aug 2019",
+    description:
+      "Developed ETL pipelines to support build of data warehouse to identify cross selling opportunities for insurance products amongst existing customer base.",
+    tech: ["Talend", "CI/CD", "Salesforce DB", "MSSQL", "AWS Redshift"],
   },
 ];
 
