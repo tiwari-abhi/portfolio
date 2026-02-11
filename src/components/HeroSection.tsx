@@ -1,22 +1,8 @@
 import { motion } from "framer-motion";
-import { ArrowDown, Sun, Sunrise, Sunset, Moon } from "lucide-react";
-import { TimeOfDay, getTimeGreeting } from "@/hooks/useTimeOfDay";
+import { ArrowDown } from "lucide-react";
 import profilePic from "@/assets/profile-pic.jpeg";
 
-interface HeroSectionProps {
-  timeOfDay: TimeOfDay;
-}
-
-const timeIcons: Record<TimeOfDay, typeof Sun> = {
-  morning: Sunrise,
-  afternoon: Sun,
-  evening: Sunset,
-  night: Moon,
-};
-
-const HeroSection = ({ timeOfDay }: HeroSectionProps) => {
-  const TimeIcon = timeIcons[timeOfDay];
-  const greeting = getTimeGreeting(timeOfDay);
+const HeroSection = () => {
 
   return (
     <section className="min-h-screen flex items-center justify-center relative bg-grid">
@@ -42,12 +28,6 @@ const HeroSection = ({ timeOfDay }: HeroSectionProps) => {
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="flex items-center gap-2">
-              <TimeIcon className="h-4 w-4 text-primary" />
-              <p className="text-primary font-mono text-sm tracking-wider">
-                {greeting} — DATA ENGINEER
-              </p>
-            </div>
           </motion.div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Building the
@@ -55,8 +35,8 @@ const HeroSection = ({ timeOfDay }: HeroSectionProps) => {
             <span className="text-gradient">data backbone</span>
           </h1>
           <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            I design and build scalable data systems — from pipelines and warehouses
-            to real-time analytics platforms that power data-driven decisions.
+            I design and build scalable data systems - from pipelines and warehouses
+            to analytic platforms that power data driven decisions and AI enablements.
           </p>
 
           <div className="flex items-center justify-center gap-4">

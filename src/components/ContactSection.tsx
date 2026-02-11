@@ -26,11 +26,11 @@ const ContactSection = () => {
           className="flex flex-col sm:flex-row items-center justify-center gap-4"
         >
           <a
-            href="mailto:hello@example.com"
+            href="mailto:abhinavtiwariusa84@gmail.com"
             className="flex items-center gap-2 px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
           >
             <Mail className="h-4 w-4" />
-            hello@example.com
+            Contact Me
           </a>
         </motion.div>
 
@@ -42,14 +42,18 @@ const ContactSection = () => {
           className="mt-10 flex items-center justify-center gap-6"
         >
           <a
-            href="#"
+            href="https://github.com/tiwari-abhi"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="GitHub"
           >
             <Github className="h-5 w-5" />
           </a>
           <a
-            href="#"
+            href="https://www.linkedin.com/in/abhinavyogeshtiwari"
+            target="_blank"
+            rel="noopener noreferrer"
             className="text-muted-foreground hover:text-primary transition-colors"
             aria-label="LinkedIn"
           >
@@ -57,7 +61,7 @@ const ContactSection = () => {
           </a>
           <span className="flex items-center gap-1.5 text-muted-foreground text-sm">
             <MapPin className="h-4 w-4" />
-            San Francisco, CA
+            Boston, MA
           </span>
         </motion.div>
       </div>

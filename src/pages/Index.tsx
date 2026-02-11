@@ -42,7 +42,7 @@ const Index = () => {
   return (
     <div className="min-h-screen transition-colors duration-500">
       <Navbar timeOfDay={activeTheme} onThemeChange={handleThemeChange} />
-      <HeroSection timeOfDay={activeTheme} />
+      <HeroSection />
       <ExpertiseSection />
       <WorkHistorySection />
       <ProjectsSection />
