@@ -3,32 +3,32 @@ import { ExternalLink, Github } from "lucide-react";
 
 const projects = [
   {
-    title: "Real-Time Analytics Platform",
+    title: "Open Source Python Library",
     description:
-      "End-to-end streaming data platform processing 1M+ events/sec with Kafka, Flink, and ClickHouse. Powers live dashboards for product analytics.",
-    tech: ["Kafka", "Apache Flink", "ClickHouse", "Python"],
-    link: "#",
+      "Published Python package and assisted documentation for library which automates and orchestrates Matillion workflows, incorporating CI/CD best practices and comprehensive test coverage.",
+    tech: ["GitHub Actions", "PyTest", "REST APIs", "Python"],
+    link: "https://pypi.org/project/pymatillion",
   },
   {
-    title: "Data Quality Framework",
+    title: "LLM Enrichment with Model Context Protocol",
     description:
-      "Open-source framework for automated data quality checks across data warehouses. Supports custom rules, anomaly detection, and Slack alerting.",
-    tech: ["dbt", "Great Expectations", "Python", "Snowflake"],
-    link: "#",
+      "Architected multi-modal MCP server to elicit user input and provide them with random fact in 60+ languages or image of a city.",
+    tech: ["Model Context Protocol", "Ollama LLM", "Python"],
+    link: "https://github.com/tiwari-abhi/MCPServerExample",
   },
   {
-    title: "ML Feature Store",
+    title: "Event Driven Data Pipeline",
     description:
-      "Centralized feature store serving 200+ ML features with low-latency online serving and batch materialization for model training pipelines.",
-    tech: ["Feast", "Redis", "Spark", "AWS"],
-    link: "#",
+      "Designed and implemented scalable event-driven pipeline to load raw sales data into warehouse and transformed it for monthly sales and inventory reporting.",
+    tech: ["Snowflake", "AWS S3", "dbt", "Airflow", "Python", "SQL", "AWS Quicksight"],
+    link: "https://github.com/tiwari-abhi/INFO_7374/tree/master/Assignment%20-%201",
   },
   {
-    title: "Cost Optimization Engine",
+    title: "Serverless Rental Price Prediction",
     description:
-      "Automated cloud cost analysis tool that reduced data infrastructure spend by 40% through intelligent workload scheduling and resource right-sizing.",
-    tech: ["Terraform", "Python", "BigQuery", "GCP"],
-    link: "#",
+      "Scraped raw data from Airbnbs in New York city and built a price projection Flask web application to visualize geospatial data and predict prices.",
+    tech: ["Azure Cloud", "AzureML", "H2O AI", "Databricks", "PowerBI"],
+    link: "https://github.com/tiwari-abhi/INFO_7374/tree/master/Final%20Project",
   },
 ];
 
