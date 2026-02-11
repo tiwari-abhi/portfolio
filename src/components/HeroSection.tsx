@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { ArrowDown, Sun, Sunrise, Sunset, Moon } from "lucide-react";
 import { TimeOfDay, getTimeGreeting } from "@/hooks/useTimeOfDay";
+import profilePic from "@/assets/profile-pic.jpeg";
 
 interface HeroSectionProps {
   timeOfDay: TimeOfDay;
@@ -32,12 +33,21 @@ const HeroSection = ({ timeOfDay }: HeroSectionProps) => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.2, duration: 0.5 }}
-            className="flex items-center justify-center gap-2 mb-4"
+            className="flex flex-col items-center gap-4 mb-6"
           >
-            <TimeIcon className="h-4 w-4 text-primary" />
-            <p className="text-primary font-mono text-sm tracking-wider">
-              {greeting} — DATA ENGINEER
-            </p>
+            <div className="w-28 h-28 md:w-36 md:h-36 rounded-full overflow-hidden border-2 border-primary/30 shadow-lg">
+              <img
+                src={profilePic}
+                alt="Profile photo"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="flex items-center gap-2">
+              <TimeIcon className="h-4 w-4 text-primary" />
+              <p className="text-primary font-mono text-sm tracking-wider">
+                {greeting} — DATA ENGINEER
+              </p>
+            </div>
           </motion.div>
           <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
             Building the
