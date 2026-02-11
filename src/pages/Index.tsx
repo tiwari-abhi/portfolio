@@ -5,43 +5,30 @@ import ExpertiseSection from "@/components/ExpertiseSection";
 import WorkHistorySection from "@/components/WorkHistorySection";
 import ProjectsSection from "@/components/ProjectsSection";
 import ContactSection from "@/components/ContactSection";
-import { useTimeOfDay, TimeOfDay } from "@/hooks/useTimeOfDay";
-
-const themeClasses: Record<TimeOfDay, string> = {
-  morning: "theme-morning",
-  afternoon: "theme-afternoon",
-  evening: "theme-evening",
-  night: "", // default root styles
-};
+import { Theme } from "@/hooks/useTimeOfDay";
 
 const Index = () => {
-  const autoTimeOfDay = useTimeOfDay();
-  const [manualTheme, setManualTheme] = useState<TimeOfDay | null>(null);
-  
-  const activeTheme = manualTheme ?? autoTimeOfDay;
+  const [theme, setTheme] = useState<Theme>("evening");
 
   useEffect(() => {
-    // Remove all theme classes first
     document.documentElement.classList.remove("theme-morning", "theme-afternoon", "theme-evening");
-    
-    // Add current theme class
-    const themeClass = themeClasses[activeTheme];
-    if (themeClass) {
-      document.documentElement.classList.add(themeClass);
+    if (theme === "afternoon") {
+      document.documentElement.classList.add("theme-afternoon");
+    } else {
+      document.documentElement.classList.add("theme-evening");
     }
-
     return () => {
-      document.documentElement.classList.remove("theme-morning", "theme-afternoon", "theme-evening");
+      document.documentElement.classList.remove("theme-afternoon", "theme-evening");
     };
-  }, [activeTheme]);
+  }, [theme]);
 
-  const handleThemeChange = (theme: TimeOfDay) => {
-    setManualTheme(theme);
+  const handleToggle = () => {
+    setTheme((prev) => (prev === "evening" ? "afternoon" : "evening"));
   };
 
   return (
     <div className="min-h-screen transition-colors duration-500">
-      <Navbar timeOfDay={activeTheme} onThemeChange={handleThemeChange} />
+      <Navbar theme={theme} onThemeToggle={handleToggle} />
       <HeroSection />
       <ExpertiseSection />
       <WorkHistorySection />

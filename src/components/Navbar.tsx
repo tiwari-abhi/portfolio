@@ -1,12 +1,6 @@
 import { useState, useEffect } from "react";
-import { Menu, X, Sun, Sunrise, Sunset, Moon } from "lucide-react";
-import { TimeOfDay } from "@/hooks/useTimeOfDay";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
+import { Menu, X, Sun, Sunset } from "lucide-react";
+import { Theme } from "@/hooks/useTimeOfDay";
 
 const links = [
   { label: "Expertise", href: "#expertise" },
@@ -15,35 +9,22 @@ const links = [
   { label: "Contact", href: "#contact" },
 ];
 
-const timeOptions: { value: TimeOfDay; label: string; icon: typeof Sun }[] = [
-  { value: "morning", label: "Morning", icon: Sunrise },
-  { value: "afternoon", label: "Afternoon", icon: Sun },
-  { value: "evening", label: "Evening", icon: Sunset },
-  { value: "night", label: "Night", icon: Moon },
-];
-
-const timeIcons: Record<TimeOfDay, typeof Sun> = {
-  morning: Sunrise,
-  afternoon: Sun,
-  evening: Sunset,
-  night: Moon,
-};
-
 interface NavbarProps {
-  timeOfDay: TimeOfDay;
-  onThemeChange: (theme: TimeOfDay) => void;
+  theme: Theme;
+  onThemeToggle: () => void;
 }
 
-const Navbar = ({ timeOfDay, onThemeChange }: NavbarProps) => {
+const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
-  const TimeIcon = timeIcons[timeOfDay];
 
   useEffect(() => {
     const handler = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", handler);
     return () => window.removeEventListener("scroll", handler);
   }, []);
+
+  const isAfternoon = theme === "afternoon";
 
   return (
     <nav
@@ -67,27 +48,19 @@ const Navbar = ({ timeOfDay, onThemeChange }: NavbarProps) => {
               {link.label}
             </a>
           ))}
-          
-          <DropdownMenu>
-            <DropdownMenuTrigger className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4 hover:text-primary transition-colors outline-none">
-              <TimeIcon className="h-3.5 w-3.5 text-primary" />
-              <span className="capitalize">{timeOfDay}</span>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="bg-card border-border">
-              {timeOptions.map((option) => (
-                <DropdownMenuItem
-                  key={option.value}
-                  onClick={() => onThemeChange(option.value)}
-                  className={`flex items-center gap-2 font-mono text-xs cursor-pointer ${
-                    timeOfDay === option.value ? "text-primary" : "text-muted-foreground"
-                  }`}
-                >
-                  <option.icon className="h-3.5 w-3.5" />
-                  {option.label}
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
+
+          <button
+            onClick={onThemeToggle}
+            className="flex items-center gap-1.5 text-xs text-muted-foreground font-mono border-l border-border pl-4 hover:text-primary transition-colors outline-none"
+            aria-label="Toggle theme"
+          >
+            {isAfternoon ? (
+              <Sun className="h-3.5 w-3.5 text-primary" />
+            ) : (
+              <Sunset className="h-3.5 w-3.5 text-primary" />
+            )}
+            <span className="capitalize">{theme}</span>
+          </button>
         </div>
 
         {/* Mobile toggle */}
@@ -114,26 +87,20 @@ const Navbar = ({ timeOfDay, onThemeChange }: NavbarProps) => {
             </a>
           ))}
           <div className="pt-3 mt-3 border-t border-border">
-            <p className="text-xs text-muted-foreground font-mono mb-2">Theme</p>
-            <div className="flex gap-2">
-              {timeOptions.map((option) => (
-                <button
-                  key={option.value}
-                  onClick={() => {
-                    onThemeChange(option.value);
-                    setOpen(false);
-                  }}
-                  className={`flex items-center justify-center p-2 rounded-md transition-colors ${
-                    timeOfDay === option.value
-                      ? "bg-primary text-primary-foreground"
-                      : "bg-secondary text-muted-foreground hover:text-foreground"
-                  }`}
-                  aria-label={option.label}
-                >
-                  <option.icon className="h-4 w-4" />
-                </button>
-              ))}
-            </div>
+            <button
+              onClick={() => {
+                onThemeToggle();
+                setOpen(false);
+              }}
+              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
+            >
+              {isAfternoon ? (
+                <Sun className="h-4 w-4 text-primary" />
+              ) : (
+                <Sunset className="h-4 w-4 text-primary" />
+              )}
+              Switch to {isAfternoon ? "Evening" : "Afternoon"}
+            </button>
           </div>
         </div>
       )}
