@@ -1,13 +1,18 @@
 import { motion } from "framer-motion";
 import { ArrowDown } from "lucide-react";
 import profilePic from "@/assets/profile-pic.jpeg";
+import heroBg from "@/assets/hero-bg.jpg";
 
 const HeroSection = () => {
 
   return (
-    <section className="min-h-screen flex items-center justify-center relative bg-grid">
+    <section className="min-h-screen flex items-center justify-center relative">
+      {/* Background image */}
+      <div className="absolute inset-0">
+        <img src={heroBg} alt="" className="w-full h-full object-cover" />
+      </div>
       {/* Gradient overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-background via-background/95 to-background pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background pointer-events-none" />
 
       <div className="container max-w-4xl mx-auto px-6 relative z-10 text-center">
         <motion.div
