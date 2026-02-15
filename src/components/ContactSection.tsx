@@ -1,30 +1,46 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { Mail, Linkedin, Github, MapPin, Send } from "lucide-react";
+import { Mail, Linkedin, Github, MapPin, Send, Loader2 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Button } from "@/components/ui/button";
 import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
+import emailjs from "@emailjs/browser";
+
+const EMAILJS_SERVICE_ID = "service_mi56m48";
+const EMAILJS_TEMPLATE_ID = "template_ee4vea9";
+const EMAILJS_PUBLIC_KEY = "paR32iJbKzUwmN96t";
 
 const ContactSection = () => {
   const { toast } = useToast();
   const [form, setForm] = useState({ firstName: "", lastName: "", email: "", message: "" });
+  const [sending, setSending] = useState(false);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setForm((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!form.firstName.trim() || !form.email.trim() || !form.message.trim()) {
       toast({ title: "Please fill in all required fields.", variant: "destructive" });
       return;
     }
-    const subject = encodeURIComponent(`Message from ${form.firstName} ${form.lastName}`);
-    const body = encodeURIComponent(`Name: ${form.firstName} ${form.lastName}\nEmail: ${form.email}\n\n${form.message}`);
-    window.location.href = `mailto:abhinavtiwariusa84@gmail.com?subject=${subject}&body=${body}`;
-    toast({ title: "Opening your email client..." });
+    setSending(true);
+    try {
+      await emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, {
+        from_name: `${form.firstName} ${form.lastName}`.trim(),
+        from_email: form.email,
+        message: form.message,
+      }, EMAILJS_PUBLIC_KEY);
+      toast({ title: "Message sent successfully!" });
+      setForm({ firstName: "", lastName: "", email: "", message: "" });
+    } catch {
+      toast({ title: "Failed to send message. Please try again.", variant: "destructive" });
+    } finally {
+      setSending(false);
+    }
   };
 
   return (
@@ -70,9 +86,9 @@ const ContactSection = () => {
             <Label htmlFor="message">Message *</Label>
             <Textarea id="message" name="message" placeholder="Your message..." rows={5} value={form.message} onChange={handleChange} />
           </div>
-          <Button type="submit" className="w-full gap-2">
-            <Send className="h-4 w-4" />
-            Send Message
+          <Button type="submit" className="w-full gap-2" disabled={sending}>
+            {sending ? <Loader2 className="h-4 w-4 animate-spin" /> : <Send className="h-4 w-4" />}
+            {sending ? "Sending..." : "Send Message"}
           </Button>
         </motion.form>
 
