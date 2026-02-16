@@ -16,7 +16,7 @@
 }
 ```
 - Ensure that .env.development and .env.production files are present
-```json
+```shell
 VITE_BASE_URL= "/ for DEV ; /portfolio/ for PROD"
 VITE_EMAILJS_SERVICE_ID="<service-id>"
 VITE_EMAILJS_TEMPLATE_ID="<template-id>"
