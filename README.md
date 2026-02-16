@@ -17,7 +17,7 @@
 ```
 - Ensure that .env.development and .env.production files are present
 ```json
-VITE_BASE_URL= "/ for DEV" OR "/portfolio/ for PROD"
+VITE_BASE_URL= "/ for DEV ; /portfolio/ for PROD"
 VITE_EMAILJS_SERVICE_ID="<service-id>"
 VITE_EMAILJS_TEMPLATE_ID="<template-id>"
 VITE_EMAILJS_PUBLIC_KEY="<public-key>"
