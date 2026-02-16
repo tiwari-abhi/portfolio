@@ -6,11 +6,11 @@
   "homepage": "https://tiwari-abhi.github.io/portfolio",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build --mode production",
     "build:dev": "vite build --mode development",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy": "VITE_BASE_URL=/portfolio/ npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dist",
     "test": "vitest run",
     "test:watch": "vitest"

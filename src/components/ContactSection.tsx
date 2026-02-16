@@ -8,9 +8,9 @@ import { Label } from "@/components/ui/label";
 import { useToast } from "@/hooks/use-toast";
 import emailjs from "@emailjs/browser";
 
-const EMAILJS_SERVICE_ID = "service_mi56m48";
-const EMAILJS_TEMPLATE_ID = "template_ee4vea9";
-const EMAILJS_PUBLIC_KEY = "paR32iJbKzUwmN96t";
+const EMAILJS_SERVICE_ID = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+const EMAILJS_TEMPLATE_ID = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+const EMAILJS_PUBLIC_KEY = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
 const ContactSection = () => {
   const { toast } = useToast();
