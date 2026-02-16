@@ -63,14 +63,28 @@ const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
           </button>
         </div>
 
-        {/* Mobile toggle */}
-        <button
-          className="md:hidden text-foreground"
-          onClick={() => setOpen(!open)}
-          aria-label="Toggle menu"
-        >
-          {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
+        {/* Mobile: Menu and Theme Toggle */}
+        <div className="md:hidden flex items-center gap-3">
+          <button
+            onClick={onThemeToggle}
+            className="theme-toggle-btn"
+            aria-label="Toggle theme"
+          >
+            {isMorning ? (
+              <Moon size={20} />
+            ) : (
+              <Sun size={20} />
+            )}
+          </button>
+          
+          <button
+            className="text-foreground"
+            onClick={() => setOpen(!open)}
+            aria-label="Toggle menu"
+          >
+            {open ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile menu */}
@@ -86,21 +100,6 @@ const Navbar = ({ theme, onThemeToggle }: NavbarProps) => {
               {link.label}
             </a>
           ))}
-          <div className="pt-3 mt-3 border-t border-border">
-            <button
-              onClick={() => {
-                onThemeToggle();
-                setOpen(false);
-              }}
-              className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors font-mono"
-            >
-              {isMorning ? (
-                <Moon size={20} />
-              ) : (
-                <Sun size={20} />
-              )}
-            </button>
-          </div>
         </div>
       )}
     </nav>
