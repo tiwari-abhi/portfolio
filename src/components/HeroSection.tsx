@@ -53,22 +53,11 @@ const HeroSection = () => {
             </a>
             <a
               href="#contact"
-              className="px-6 py-3 rounded-lg border border-border text-foreground font-medium hover:border-glow hover:text-primary transition-all"
+              className="px-6 py-3 rounded-lg bg-primary text-primary-foreground font-medium hover:opacity-90 transition-opacity"
             >
               Get In Touch
             </a>
           </div>
-        </motion.div>
-
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.5 }}
-          className="absolute bottom-10 left-1/2 -translate-x-1/2"
-        >
-          <a href="#expertise" aria-label="Scroll down">
-            <ArrowDown className="h-5 w-5 text-muted-foreground animate-bounce" />
-          </a>
         </motion.div>
       </div>
     </section>
